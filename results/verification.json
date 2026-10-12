@@ -1,0 +1,81 @@
+{
+  "dashboard_url": "http://localhost:8000/dashboard/2",
+  "cards": 10,
+  "filters": 5,
+  "filter_checks": [
+    {
+      "filter": "date_range",
+      "selection": {
+        "date_range": "2016-01-01~2016-12-31"
+      },
+      "revenue": 40568672.36,
+      "verified": true
+    },
+    {
+      "filter": "category",
+      "selection": {
+        "category": [
+          "Dairy Products",
+          "Beverages"
+        ]
+      },
+      "revenue": 150181300.965,
+      "verified": true
+    },
+    {
+      "filter": "country",
+      "selection": {
+        "country": [
+          "France"
+        ]
+      },
+      "revenue": 53323305.7625,
+      "verified": true
+    },
+    {
+      "filter": "employee",
+      "selection": {
+        "employee": [
+          "Steven Buchanan"
+        ]
+      },
+      "revenue": 51386459.1025,
+      "verified": true
+    },
+    {
+      "filter": "product",
+      "selection": {
+        "product": [
+          "Queso Cabrales"
+        ]
+      },
+      "revenue": 4234846.77,
+      "verified": true
+    },
+    {
+      "filter": "combined",
+      "selection": {
+        "date_range": "2016-01-01~2016-12-31",
+        "category": [
+          "Dairy Products",
+          "Beverages"
+        ],
+        "country": [
+          "France"
+        ],
+        "employee": [
+          "Steven Buchanan"
+        ],
+        "product": [
+          "Queso Cabrales"
+        ]
+      },
+      "revenue": 2667.0,
+      "verified": true
+    }
+  ],
+  "total_revenue": 448386633.1695,
+  "total_orders": 16282,
+  "average_order_value": 27538.793340468,
+  "total_quantity": 15538602
+}

@@ -1,0 +1,33 @@
+services:
+  metabase:
+    image: metabase/metabase:v0.64.1
+    ports:
+      - "127.0.0.1:8000:3000"
+    environment:
+      MB_DB_TYPE: postgres
+      MB_DB_DBNAME: metabaseappdb
+      MB_DB_PORT: 5432
+      MB_DB_USER: metabase
+      MB_DB_PASS: ${METABASE_APP_DB_PASSWORD:?Set METABASE_APP_DB_PASSWORD in .env}
+      MB_DB_HOST: postgres
+      MB_ANON_TRACKING_ENABLED: "false"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: metabase
+      POSTGRES_DB: metabaseappdb
+      POSTGRES_PASSWORD: ${METABASE_APP_DB_PASSWORD:?Set METABASE_APP_DB_PASSWORD in .env}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U metabase -d metabaseappdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+volumes:
+  postgres-data:
